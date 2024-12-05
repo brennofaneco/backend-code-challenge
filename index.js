@@ -1,6 +1,5 @@
 const assert = require('assert');
 const fs = require('fs-extra');
-const fetch = require('node-fetch');
 
 const protocol = 'http';
 const host = '127.0.0.1';
@@ -8,6 +7,7 @@ const port = '8080';
 const server = `${protocol}://${host}:${port}`;
 
 (async () => {
+  const fetch = (await import('node-fetch')).default;
   // get a city by tag ("excepteurus")
   let result = await fetch(`${server}/cities-by-tag?tag=excepteurus&isActive=true`);
 
